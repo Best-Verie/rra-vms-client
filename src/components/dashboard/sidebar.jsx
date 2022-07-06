@@ -14,7 +14,7 @@ export default function Sidebar() {
               className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
             >
               <span className="fs-5 d-none d-sm-inline bg-text-color fw-bold ">
-                App_name
+                RR.Authority
               </span>
             </a>
             <ul
@@ -22,7 +22,7 @@ export default function Sidebar() {
               id="menu"
             >
               <li className="nav-item mt-5">
-                <a href="#" className="nav-link align-middle px-0">
+                <a href="/dashboard" className="nav-link align-middle px-0">
                   <BiHomeAlt color="white" fontSize={20} />
                   <span className="ms-1 d-none d-sm-inline bg-text-color text-white">
                     Home
@@ -30,13 +30,32 @@ export default function Sidebar() {
                 </a>
               </li>
               <li className="nav-item mt-3">
-                <a href="#" className="nav-link align-middle px-0">
+                <a href="/vehicles" className="nav-link align-middle px-0">
                   <BsFillPersonLinesFill color="white" fontSize={19} />
                   <span className="ms-1 d-none d-sm-inline bg-text-color text-white">
-                    Candidates
+                    Vehicles
                   </span>
                 </a>
               </li>
+
+              <li className="nav-item mt-3">
+                <a href="/owner" className="nav-link align-middle px-0">
+                  <BsFillPersonLinesFill color="white" fontSize={19} />
+                  <span className="ms-1 d-none d-sm-inline bg-text-color text-white">
+                    V.Owners
+                  </span>
+                </a>
+              </li>
+
+                <li className="nav-item mt-3">
+                <a href="/owner" className="nav-link align-middle px-0">
+                  <BsFillPersonLinesFill color="white" fontSize={19} />
+                  <span className="ms-1 d-none d-sm-inline bg-text-color text-white">
+                    V.Ownership
+                  </span>
+                </a>
+              </li>
+
 
               <li className="nav-item mt-3">
                 <a href="#" className="nav-link px-0 align-middle">

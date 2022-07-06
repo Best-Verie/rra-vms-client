@@ -7,7 +7,7 @@ export default function Login() {
         <div className="col-md-6 col-lg-6 col-sm-12 left">
           <div className="left-content">
             <div className="slogan text-left">
-              <h3>App_name slogan</h3>
+              <h3>Rwanda Revenue Authority</h3>
             </div>
             <div className="descr">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad nulla

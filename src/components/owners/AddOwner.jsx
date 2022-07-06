@@ -1,38 +1,49 @@
-import "./../../pages/auth/login.css";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
+import toast from "react-hot-toast";
 import api from "../../api";
 import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
+import "../../pages/dashboard/dashboard.css";
 
-export default function SignUpForm() {
-  const navigate = useNavigate();
-  const [user, setUser] = useState({
-    names: "",
-    email: "",
-    phone: "",
-    nationalId: "",
+export default function AddOwner(){
+     const navigate = useNavigate();
+
+  const [owner, setOwner] = useState({
+   names:"",
+   phone:"",
+   nationalId:"",
+   address:"",
   });
 
   const handleChange = (e) => {
-    setUser({
-      ...user,
+    setOwner({
+      ...owner,
       [e.target.name]: e.target.value,
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await api.post("/auth/register", user);
-      toast.success("Successfully registered to rra");
-      navigate("/login");
+
+        const token = localStorage.getItem("token");
+        console.log("token", token);
+      const reponse = await api.post("/car-owner/create", owner ,{
+        headers: {
+          'Authorization': `Bearer ${token}` 
+        },
+      });
+      console.log("reponse", reponse);
+ 
+      navigate("/dashboard");
+      toast.success("Successfully registerd car");
     } catch (error) {
       toast.error(error.response.data);
     }
   };
-  return (
-    <div className="container">
-      <form className="w-75 p-3" onSubmit={handleSubmit}>
+    return (
+    <div className="container-fluid">
+        <form className="w-50 p-3" onSubmit={handleSubmit}>
         <div class="form-group">
           <input
             type="text"
@@ -40,7 +51,7 @@ export default function SignUpForm() {
             id="exampleInputEmail1"
             placeholder="Names"
             name="names"
-            value={user.names}
+            value={owner.names}
             onChange={handleChange}
           />
         </div>
@@ -52,30 +63,29 @@ export default function SignUpForm() {
              maxlength="10"
             name="phone"
             placeholder="Phone"
-            value={user.phone}
+            value={owner.phone}
             onChange={handleChange}
           />
         </div>
         <div class="form-group mt-5">
           <input
-            type="email"
+            type="text"
             class="form-control mt-3"
             id="exampleInputEmail1"
-            placeholder="Email"
-            name="email"
-            value={user.email}
+            placeholder="address"
+            name="address"
+            value={owner.address}
             onChange={handleChange}
           />
         </div>
         <div class="form-group mt-5">
-          <input
+         <input
             type="number"
-            class="form-control mt-3"
-            id="exampleInputPassword1"
              maxlength="16"
-            placeholder="nationalId"
+            class="form-control mt-3"
+            placeholder="national Id"
             name="nationalId"
-            value={user.nationalId}
+            value={owner.nationalId}
             onChange={handleChange}
           />
         </div>
@@ -86,13 +96,13 @@ export default function SignUpForm() {
 
         <div className="bottom-content mt-3 text-center">
           <p>
-            Already have account !?
-            <span className="span-sign" onClick={() => navigate("/login")}>
-              Log in
+            Already registered owners !?
+            <span className="span-sign" onClick={() => navigate("/owners")}>
+              View all
             </span>
           </p>
         </div>
       </form>
-    </div>
+            </div>
   );
 }

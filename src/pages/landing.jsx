@@ -1,5 +1,5 @@
 import "./landing.css";
-import headerImg from "./header.png";
+import headerImg from "./../assets/images/header.png";
 import { useNavigate } from "react-router-dom";
 export default function Landing() {
   const navigate = useNavigate();
@@ -9,10 +9,11 @@ export default function Landing() {
         <div className="row">
           <div className="col-md-6 col-lg-6 col-sm-12">
             <div className="left-content">
-              <div className="slogan text-left">
-                <h3>App_name slogan</h3>
-              </div>
+             
               <div className="descr">
+                 <div className="slogan text-left">
+                 <h3>Rwanda Revenue Authority</h3>
+                  </div>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
                 nulla velit quisquam quo at repellendus blanditiis. Accusamus
                 eveniet consectetur quaerat sapiente rem sunt architecto ducimus

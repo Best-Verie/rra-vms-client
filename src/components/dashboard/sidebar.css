@@ -1,0 +1,14 @@
+.topNav{
+    margin-top: 4em;
+}
+
+.cards-content{
+    margin-top: 4em;
+}
+.form-control:focus {
+    outline: none;
+    box-shadow: none;
+}
+.form-control{
+    border-radius: 10px;
+}

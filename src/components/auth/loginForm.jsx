@@ -10,7 +10,7 @@ export default function LoginForm() {
   const { setUser } = useContext(UserContext);
   const [user, setUser_] = useState({
     email: "",
-    password: "",
+    nationalId: "",
   });
 
   const handleChange = (e) => {
@@ -23,7 +23,7 @@ export default function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const reponse = await api.post("/user/login", user);
+      const reponse = await api.post("/auth/login", user);
       console.log("reponse", reponse);
       localStorage.setItem("token", reponse.data.accessToken);
       setUser(reponse.data.user);
@@ -40,7 +40,6 @@ export default function LoginForm() {
           <input
             type="email"
             class="form-control mt-3"
-            id="exampleInputEmail1"
             placeholder="Email"
             name="email"
             value={user.email}
@@ -49,12 +48,12 @@ export default function LoginForm() {
         </div>
         <div class="form-group mt-5">
           <input
-            type="password"
+            type="number"
+             maxlength="16"
             class="form-control mt-3"
-            id="exampleInputPassword1"
-            placeholder="Password"
-            name="password"
-            value={user.password}
+            placeholder="national Id"
+            name="nationalId"
+            value={user.nationalId}
             onChange={handleChange}
           />
         </div>
@@ -65,7 +64,7 @@ export default function LoginForm() {
 
         <div className="bottom-content mt-3 text-center">
           <p>
-            No account !?<span className="span-sign">Sign up</span>
+            No account !?<span className="span-sign" onClick={() => navigate("/signUp")}>Sign up</span>
           </p>
         </div>
       </form>

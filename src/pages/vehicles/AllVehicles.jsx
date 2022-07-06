@@ -1,11 +1,12 @@
 import Sidebar from "../../components/dashboard/sidebar";
 import UserContext from "../../context/userContext";
-import "./dashboard.css";
+import "../dashboard/dashboard.css";
 import { useContext } from "react";
 import AllOwners from "../../components/owners/AllOwners";
-import HomeDashboard from "../../components/homeDashboard/homeDashboard";
+import AllVehiclesList from "../../components/vehicles/AllVehiclesList";
+import History from "../../components/dashboard/logs";
 
-export default function Dashboard() {
+export default function AllVehicles() {
   const { user } = useContext(UserContext);
 
   return (
@@ -14,8 +15,11 @@ export default function Dashboard() {
         <div className="col-md-2 col-lg-2 sideb">
           <Sidebar />
         </div>
-        <div className="col-md-10 col-lg-10 col-sm-12">
-          <HomeDashboard/>
+        <div className="col-md-8 col-lg-8 col-sm-12">
+          <AllVehiclesList/>
+        </div>
+        <div className="col-md-2 col-lg-2">
+            <History/>
         </div>
       </div>
     </div>
